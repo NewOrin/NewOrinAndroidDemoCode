@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/NewOrinAndroidDemoCode.iml" filepath="$PROJECT_DIR$/NewOrinAndroidDemoCode.iml" />
       <module fileurl="file://$PROJECT_DIR$/mvpdemo/app.iml" filepath="$PROJECT_DIR$/mvpdemo/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/customizepageadapterdemo/customizepageadapterdemo.iml" filepath="$PROJECT_DIR$/customizepageadapterdemo/customizepageadapterdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/asynctaskdemo/asynctaskdemo.iml" filepath="$PROJECT_DIR$/asynctaskdemo/asynctaskdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/mvpdemo/mvpdemo.iml" filepath="$PROJECT_DIR$/mvpdemo/mvpdemo.iml" />
     </modules>
   </component>

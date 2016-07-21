@@ -1,1 +1,2 @@
-include ':mvpdemo', ':customizepageadapterdemo'
+include ':asynctaskdemo'
+include ':mvpdemo'
