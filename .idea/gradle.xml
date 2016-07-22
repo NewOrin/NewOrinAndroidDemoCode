@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/asynctaskdemo" />
             <option value="$PROJECT_DIR$/handlerdemo" />
             <option value="$PROJECT_DIR$/mvpdemo" />
+            <option value="$PROJECT_DIR$/passwordviewdemo" />
           </set>
         </option>
         <option name="myModules">
@@ -20,6 +21,7 @@
             <option value="$PROJECT_DIR$/asynctaskdemo" />
             <option value="$PROJECT_DIR$/handlerdemo" />
             <option value="$PROJECT_DIR$/mvpdemo" />
+            <option value="$PROJECT_DIR$/passwordviewdemo" />
           </set>
         </option>
       </GradleProjectSettings>

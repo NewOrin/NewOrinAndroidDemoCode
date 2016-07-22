@@ -1,2 +1,2 @@
-include ':asynctaskdemo', ':handlerdemo'
+include ':asynctaskdemo', ':handlerdemo', ':passwordviewdemo'
 include ':mvpdemo'
