@@ -1,2 +1,2 @@
-include ':asynctaskdemo'
+include ':asynctaskdemo', ':handlerdemo'
 include ':mvpdemo'
