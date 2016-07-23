@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.neworin.layoutweightdemo.MainActivity">
+    <!--1,LinearLayout中的layout_weight属性，首先按照控件声明的尺寸进行分配，
+    然后再按照剩下的空间按weight进行分配-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="#44ff0000"
+            android:gravity="center"
+            android:text="11111111111111"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="2"
+            android:background="#4400ff00"
+            android:gravity="center"
+            android:text="2"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="3"
+            android:background="#440000ff"
+            android:gravity="center"
+            android:text="3"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!--2,layout_weight，首先减去控件所声明的尺寸，剩下的尺寸按比例分配-->
+    <!--尺寸=控件宽度+父控件剩余尺寸*比例-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="#44ff0000"
+            android:gravity="center"
+            android:text="11111111111111"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_weight="2"
+            android:background="#4400ff00"
+            android:gravity="center"
+            android:text="2"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_weight="2"
+            android:background="#440000ff"
+            android:gravity="center"
+            android:text="3"
+            android:textSize="16sp" />
+    </LinearLayout>
+</LinearLayout>

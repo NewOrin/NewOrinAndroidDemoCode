@@ -5,12 +5,13 @@
       <GradleProjectSettings>
         <option name="distributionType" value="LOCAL" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="D:\Android\Android Studio\gradle\gradle-2.10" />
+        <option name="gradleHome" value="D:\Adroid_IDE\Android Studio\gradle\gradle-2.10" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/asynctaskdemo" />
             <option value="$PROJECT_DIR$/handlerdemo" />
+            <option value="$PROJECT_DIR$/layoutweightdemo" />
             <option value="$PROJECT_DIR$/mvpdemo" />
             <option value="$PROJECT_DIR$/passwordviewdemo" />
           </set>
@@ -20,6 +21,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/asynctaskdemo" />
             <option value="$PROJECT_DIR$/handlerdemo" />
+            <option value="$PROJECT_DIR$/layoutweightdemo" />
             <option value="$PROJECT_DIR$/mvpdemo" />
             <option value="$PROJECT_DIR$/passwordviewdemo" />
           </set>

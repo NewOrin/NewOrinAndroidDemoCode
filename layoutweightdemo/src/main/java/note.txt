@@ -1,0 +1,6 @@
+1,LinearLayout中的layout_weight属性，首先按照控件声明的尺寸进行分配，
+  然后再按照剩下的空间按weight进行分配
+
+2,layout_weight，首先减去控件所声明的尺寸，剩下的尺寸按比例分配
+
+3,weightSum :声明控件数

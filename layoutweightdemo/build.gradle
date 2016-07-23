@@ -4,8 +4,9 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
 
+
     defaultConfig {
-        applicationId "android.neworin.com.handlerdemo"
+        applicationId "com.neworin.layoutweightdemo"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
