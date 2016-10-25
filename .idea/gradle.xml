@@ -10,6 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/asynctaskdemo" />
+            <option value="$PROJECT_DIR$/bordertextview" />
             <option value="$PROJECT_DIR$/handlerdemo" />
             <option value="$PROJECT_DIR$/layoutweightdemo" />
             <option value="$PROJECT_DIR$/mvpdemo" />

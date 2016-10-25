@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/NewOrinAndroidDemoCode.iml" filepath="$PROJECT_DIR$/NewOrinAndroidDemoCode.iml" />
       <module fileurl="file://$PROJECT_DIR$/asynctaskdemo/asynctaskdemo.iml" filepath="$PROJECT_DIR$/asynctaskdemo/asynctaskdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bordertextview/bordertextview.iml" filepath="$PROJECT_DIR$/bordertextview/bordertextview.iml" />
       <module fileurl="file://$PROJECT_DIR$/handlerdemo/handlerdemo.iml" filepath="$PROJECT_DIR$/handlerdemo/handlerdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/layoutweightdemo/layoutweightdemo.iml" filepath="$PROJECT_DIR$/layoutweightdemo/layoutweightdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/mvpdemo/mvpdemo.iml" filepath="$PROJECT_DIR$/mvpdemo/mvpdemo.iml" />
