@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$/layoutweightdemo" />
             <option value="$PROJECT_DIR$/mvpdemo" />
             <option value="$PROJECT_DIR$/passwordviewdemo" />
+            <option value="$PROJECT_DIR$/scrollsticklayoutdemo" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

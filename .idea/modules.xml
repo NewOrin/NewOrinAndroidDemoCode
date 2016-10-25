@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/layoutweightdemo/layoutweightdemo.iml" filepath="$PROJECT_DIR$/layoutweightdemo/layoutweightdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/mvpdemo/mvpdemo.iml" filepath="$PROJECT_DIR$/mvpdemo/mvpdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/passwordviewdemo/passwordviewdemo.iml" filepath="$PROJECT_DIR$/passwordviewdemo/passwordviewdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/scrollsticklayoutdemo/scrollsticklayoutdemo.iml" filepath="$PROJECT_DIR$/scrollsticklayoutdemo/scrollsticklayoutdemo.iml" />
     </modules>
   </component>
 </project>

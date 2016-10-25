@@ -1,2 +1,2 @@
-include ':asynctaskdemo', ':handlerdemo', ':passwordviewdemo', ':layoutweightdemo'
+include ':asynctaskdemo', ':handlerdemo', ':passwordviewdemo', ':layoutweightdemo', ':scrollsticklayoutdemo'
 include ':mvpdemo'
