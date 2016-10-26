@@ -5,7 +5,10 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 
@@ -18,9 +21,11 @@ import android.view.View;
 
 public class BorderTextView extends View {
 
+    private static final String TAG = "BorderTextView";
     private TypedArray mTypedArray;
     private Paint mTextPaint;
     private Paint mBorderPaint;
+    private Rect mRect;
 
     private String mText;
     private int mTextColor;
@@ -94,34 +99,31 @@ public class BorderTextView extends View {
         mBorderPaint.setFlags(Paint.ANTI_ALIAS_FLAG);
         mBorderPaint.setStrokeWidth(mBorderWidth);
         mBorderPaint.setAntiAlias(false);
+
+        mRect = new Rect();
+        mTextPaint.getTextBounds(mText, 0, mText.length(), mRect);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        float drawX = (getMeasuredWidth() - getStringTextWidth(mText)) / 2;
-        float drawY = (getMeasuredHeight() - getStringTextHeight()) / 2;
+        float textWidth = mRect.width();
+        float textHeight = mRect.height();
 
-        float radius = getStringTextWidth(mText) > getStringTextHeight() ? getStringTextWidth(mText) :
-                       getStringTextHeight();
+        Log.d(TAG, "屏幕中心:(" + getMeasuredWidth() / 2 + "," + getMeasuredHeight() / 2 + ")");
+        Log.d(TAG, "字体宽度" + textWidth);
+        Log.d(TAG, "字体高度:" + textHeight);
+        float textPosX = getMeasuredWidth() / 2 - textWidth / 2;
+        float textPosY = getMeasuredHeight() / 2 + textHeight / 2;
 
-        canvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, radius, mBorderPaint);
-        canvas.drawText(mText, drawX, drawY, mTextPaint);
-    }
+        float circlePosX = getMeasuredWidth() / 2;
+        float circlePosY = getMeasuredHeight() / 2;
 
-    /**
-     * 获取字体宽度
-     *
-     * @param text
-     *
-     * @return
-     */
-    private float getStringTextWidth(String text) {
-        return mTextPaint.measureText(text);
-    }
+        float radius = (textWidth > textHeight ? textWidth : textHeight) / 2;
 
-    private float getStringTextHeight() {
-        Paint.FontMetrics fm = mTextPaint.getFontMetrics();
-        return (float) (Math.ceil(fm.descent - fm.top) + 2);
+        Log.d(TAG, "文字坐标点 : (" + textPosX + "," + textPosY + ")");
+        Log.d(TAG, "圆的坐标点 : (" + circlePosX + "," + circlePosY + ")---圆半径:" + radius);
+        canvas.drawCircle(circlePosX, circlePosY, radius, mBorderPaint);
+        canvas.drawText(mText, textPosX, textPosY, mTextPaint);
     }
 }

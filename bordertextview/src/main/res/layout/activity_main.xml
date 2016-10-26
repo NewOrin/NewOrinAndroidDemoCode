@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@+id/activity_main"
+<LinearLayout android:id="@+id/activity_main"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context="com.neworin.bordertextview.MainActivity">
-
-    <com.neworin.bordertextview.BorderTextView
+    <!--
+        <com.neworin.bordertextview.BorderTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:borderBackgroundColor="@color/colorTextBackground"
+            app:text="5"
+            app:textColor="@color/colorText"
+            app:textSize="80sp" />-->
+    <com.neworin.bordertextview.BorderTextView2
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:borderBackgroundColor="@color/colorAccent"
-        app:text="你好"
-        app:textColor="@color/colorPrimary"
-        app:textSize="20sp" />
-</RelativeLayout>
+        android:textSize="50sp"
+        android:text="你好" />
+</LinearLayout>
