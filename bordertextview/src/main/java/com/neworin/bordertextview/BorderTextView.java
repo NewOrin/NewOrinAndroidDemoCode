@@ -2,6 +2,7 @@ package com.neworin.bordertextview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
@@ -84,11 +85,43 @@ public class BorderTextView extends View {
         mTextPaint = new Paint();
         mTextPaint.setTextSize(mTextSize);
         mTextPaint.setColor(mTextColor);
+        mTextPaint.setFlags(Paint.ANTI_ALIAS_FLAG);
         mTextPaint.setAntiAlias(false);
 
         mBorderPaint = new Paint();
         mBorderPaint.setColor(mBorderBackgroundColor);
+        mBorderPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+        mBorderPaint.setFlags(Paint.ANTI_ALIAS_FLAG);
+        mBorderPaint.setStrokeWidth(mBorderWidth);
         mBorderPaint.setAntiAlias(false);
+    }
 
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        float drawX = (getMeasuredWidth() - getStringTextWidth(mText)) / 2;
+        float drawY = (getMeasuredHeight() - getStringTextHeight()) / 2;
+
+        float radius = getStringTextWidth(mText) > getStringTextHeight() ? getStringTextWidth(mText) :
+                       getStringTextHeight();
+
+        canvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, radius, mBorderPaint);
+        canvas.drawText(mText, drawX, drawY, mTextPaint);
+    }
+
+    /**
+     * 获取字体宽度
+     *
+     * @param text
+     *
+     * @return
+     */
+    private float getStringTextWidth(String text) {
+        return mTextPaint.measureText(text);
+    }
+
+    private float getStringTextHeight() {
+        Paint.FontMetrics fm = mTextPaint.getFontMetrics();
+        return (float) (Math.ceil(fm.descent - fm.top) + 2);
     }
 }
