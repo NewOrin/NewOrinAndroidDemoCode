@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@+id/activity_main"
+<RelativeLayout android:id="@+id/activity_main"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
     tools:context="com.neworin.bordertextview.MainActivity">
-    <!--
-        <com.neworin.bordertextview.BorderTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:borderBackgroundColor="@color/colorTextBackground"
-            app:text="5"
-            app:textColor="@color/colorText"
-            app:textSize="80sp" />-->
-    <com.neworin.bordertextview.BorderTextView2
+
+    <com.neworin.bordertextview.BorderTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="50sp"
-        android:text="你好" />
-</LinearLayout>
+        android:layout_centerInParent="true"
+        app:borderBackgroundColor="@color/colorTextBackground"
+        app:text="5"
+        app:textColor="@color/colorText"
+        app:textSize="80sp" />
+
+</RelativeLayout>

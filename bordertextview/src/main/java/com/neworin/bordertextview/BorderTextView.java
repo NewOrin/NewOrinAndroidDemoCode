@@ -6,7 +6,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
@@ -32,6 +31,10 @@ public class BorderTextView extends View {
     private int mTextSize;
     private int mBorderWidth;
     private int mBorderBackgroundColor;
+
+    private int textWH;
+    private int mWidth;
+    private int mHeight;
 
     private static final int BORDER_DEFAULT_WIDTH = 5;
 
@@ -92,7 +95,8 @@ public class BorderTextView extends View {
         mTextPaint.setColor(mTextColor);
         mTextPaint.setFlags(Paint.ANTI_ALIAS_FLAG);
         mTextPaint.setAntiAlias(false);
-
+        mTextPaint.setTextAlign(Paint.Align.CENTER);
+        this.setBackgroundColor(Color.GRAY);
         mBorderPaint = new Paint();
         mBorderPaint.setColor(mBorderBackgroundColor);
         mBorderPaint.setStyle(Paint.Style.FILL_AND_STROKE);
@@ -105,25 +109,55 @@ public class BorderTextView extends View {
     }
 
     @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        /**
+         * 获得宽高
+         */
+        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+        if (widthMode == MeasureSpec.EXACTLY) {
+            mWidth = widthSize;
+        } else {
+            mTextPaint.setTextSize(mTextSize);
+            mTextPaint.getTextBounds(mText, 0, mText.length(), mRect);
+            float textWidth = mRect.width();
+            int desired = (int) (getPaddingLeft() + textWidth + getPaddingRight());
+            mWidth = desired;
+        }
+        if (heightMode == MeasureSpec.EXACTLY) {
+            mHeight = heightSize;
+        } else {
+            mTextPaint.setTextSize(mTextSize);
+            mTextPaint.getTextBounds(mText, 0, mText.length(), mRect);
+            float textHeight = mRect.height();
+            int desired = (int) (getPaddingTop() + textHeight + getPaddingBottom());
+            mHeight = desired;
+        }
+        textWH = (int) Math.sqrt((mHeight * mHeight + mWidth * mWidth));
+        setMeasuredDimension(textWH, textWH);
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
+    }
+
+    @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        float textWidth = mRect.width();
-        float textHeight = mRect.height();
 
         Log.d(TAG, "屏幕中心:(" + getMeasuredWidth() / 2 + "," + getMeasuredHeight() / 2 + ")");
-        Log.d(TAG, "字体宽度" + textWidth);
-        Log.d(TAG, "字体高度:" + textHeight);
-        float textPosX = getMeasuredWidth() / 2 - textWidth / 2;
-        float textPosY = getMeasuredHeight() / 2 + textHeight / 2;
-
+        Log.d(TAG, "字体宽度" + mWidth);
+        Log.d(TAG, "字体高度:" + mHeight);
         float circlePosX = getMeasuredWidth() / 2;
         float circlePosY = getMeasuredHeight() / 2;
 
-        float radius = (textWidth > textHeight ? textWidth : textHeight) / 2;
-
-        Log.d(TAG, "文字坐标点 : (" + textPosX + "," + textPosY + ")");
+        int radius = textWH / 2;
         Log.d(TAG, "圆的坐标点 : (" + circlePosX + "," + circlePosY + ")---圆半径:" + radius);
         canvas.drawCircle(circlePosX, circlePosY, radius, mBorderPaint);
-        canvas.drawText(mText, textPosX, textPosY, mTextPaint);
+        canvas.drawText(mText, circlePosX, circlePosY, mTextPaint);
     }
 }
