@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -216,18 +217,17 @@ public class RefreshableView extends LinearLayout implements View.OnTouchListene
         if (ableToPull) {
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
+                    //记录手指点击位置
                     yDown = event.getRawY();
+                    Log.d(TAG, "yDown = " + yDown);
                     break;
                 case MotionEvent.ACTION_MOVE:
+                    //手指移动位置
                     float yMove = event.getRawY();
+                    Log.d(TAG, "yMove = " + yMove);
+                    //移动距离
                     int distance = (int) (yMove - yDown);
-                    //如果手指是下滑状态，并且下拉头是完全隐藏的，就屏蔽下拉事件
-                    if (distance <= 0 && headerLayoutParams.topMargin <= hideHeaderHeight) {
-                        return false;
-                    }
-                    if (distance < touchSlop) {
-                        return false;
-                    }
+                    Log.d(TAG, "distance = " + distance);
                     if (currentStatus != STATUS_REFRESHING) {
                         if (headerLayoutParams.topMargin > 0) {
                             currentStatus = STATUS_RELEASE_TO_REFRESH;
@@ -238,6 +238,25 @@ public class RefreshableView extends LinearLayout implements View.OnTouchListene
                         headerLayoutParams.topMargin = (distance / 2) + hideHeaderHeight;
                         header.setLayoutParams(headerLayoutParams);
                     }
+                    if (currentStatus == STATUS_REFRESHING) {
+                        //上滑
+                        if (distance < 0) {
+                            Log.d(TAG, "上滑" + distance);
+                            if (headerLayoutParams.topMargin > 0) {
+                                headerLayoutParams.topMargin = (-hideHeaderHeight) - distance;
+                            }
+                        }
+                        //下滑
+                        else if (distance >= 0) {
+//                            Log.d(TAG, "下滑" + distance);
+                            headerLayoutParams.topMargin = (distance / 2);
+                            header.setLayoutParams(headerLayoutParams);
+                        }
+                    }
+                    //如果手指是上滑状态，并且下拉头是完全隐藏的，就屏蔽下拉事件
+                    if (distance <= 0 && headerLayoutParams.topMargin <= hideHeaderHeight) {
+                        return false;
+                    }
                     break;
                 case MotionEvent.ACTION_UP:
                 default:
@@ -247,11 +266,16 @@ public class RefreshableView extends LinearLayout implements View.OnTouchListene
                     } else if (currentStatus == STATUS_PULL_TO_REFRESH) {
                         //松手时如果是下拉状态，就去调用隐藏下拉头的任务
                         new HideHeaderTask().execute();
+                    } else if (currentStatus == STATUS_REFRESHING) {
+                        headerLayoutParams.topMargin = 0;
+                        header.setLayoutParams(headerLayoutParams);
                     }
                     break;
             }
             //更新下拉头中的信息
-            if (currentStatus == STATUS_PULL_TO_REFRESH || currentStatus == STATUS_RELEASE_TO_REFRESH) {
+            if (currentStatus == STATUS_PULL_TO_REFRESH ||
+                currentStatus == STATUS_RELEASE_TO_REFRESH ||
+                currentStatus == STATUS_REFRESHING) {
                 updateHeaderView();
                 // 当前正处于下拉或释放状态，要让ListView失去焦点，否则被点击的那一项会一直处于选中状态
                 listView.setPressed(false);
@@ -405,7 +429,7 @@ public class RefreshableView extends LinearLayout implements View.OnTouchListene
                     break;
                 }
                 publishProgress(topMargin);
-                sleep(10);
+//                sleep(10);
             }
             currentStatus = STATUS_REFRESHING;
             publishProgress(0);
@@ -438,7 +462,7 @@ public class RefreshableView extends LinearLayout implements View.OnTouchListene
                     break;
                 }
                 publishProgress(topMargin);
-                sleep(10);
+//                sleep(10);
             }
             return topMargin;
         }
